@@ -59,7 +59,7 @@ Difficulty : Medium +
 */
 #include <stdlib.h>
 #include <stdio.h>
-int *a, i = 0;
+
 struct node_dll{
 	int data;
 	struct node_dll *next;
@@ -70,7 +70,7 @@ struct node{
 	struct node *left;
 	struct node *right;
 };
-
+int *a, i = 0;
 void traversal(struct node *temp)
 {
 	if (temp != NULL)

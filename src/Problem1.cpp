@@ -49,8 +49,27 @@ struct node{
 	struct node *left;
 	struct node *right;
 };
-
-
+int *a;
+void traversal(struct node *temp)
+{
+	if (temp != NULL)
+	{
+		traversal(temp->left);
+		a[temp->data]++;
+		traversal(temp->right);
+	}
+}
 int get_missing_value(struct node *root,int n){
+	if (root==NULL)
     return -1;
+	int i;
+	a = (int *)malloc(sizeof(int)*(n + 1));
+	for (i = 0; i <= n; i++)
+		a[i] = 0;
+	traversal(root);
+	for (i = 0; i <= n; i++)
+	{
+		if (a[i] == 0)
+			return i;
+	}
 }

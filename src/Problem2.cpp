@@ -59,7 +59,7 @@ Difficulty : Medium +
 */
 #include <stdlib.h>
 #include <stdio.h>
-
+int *a, i = 0;
 struct node_dll{
 	int data;
 	struct node_dll *next;
@@ -71,6 +71,32 @@ struct node{
 	struct node *right;
 };
 
+void traversal(struct node *temp)
+{
+	if (temp != NULL)
+	{
+		traversal(temp->left);
+		a[i]=temp->data;
+		i++;
+		traversal(temp->right);
+	}
+}
 int is_identical(struct node_dll *head, struct node *root){
-	return -1;
+	if(root==NULL)
+		return -1;
+	if (head == NULL)
+		return -1;
+	struct node_dll *temp1=NULL;
+	int j=0;	
+	a = (int *)malloc(sizeof(int)*20);
+	traversal(root);
+	temp1 = head;
+	while (temp1 != NULL)
+	{
+		if (temp1->data != a[j])
+			return 0;
+		j++;
+		temp1 = temp1->next;
+	}
+	return 1;
 }
